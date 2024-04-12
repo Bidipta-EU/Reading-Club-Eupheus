@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const MenuBar1 = () => {
   let navigate = useNavigate()
   return (
-    <section className="self-stretch h-[138px] flex flex-row items-start justify-start pt-0 pb-[50px] pr-0.5 pl-0 box-border top-[0] z-[99] sticky max-w-full">
+    <section className=" self-stretch h-[138px] flex flex-row items-start justify-start pt-0 pb-[50px] pr-0.5 pl-0 box-border top-[0] z-[99] sticky max-w-full">
       <header className="self-stretch flex-1 bg-white shadow-[0px_-1px_0px_#ececf5_inset] flex flex-row items-end justify-start pt-[14.5px] pb-[13px] pr-[45px] pl-[35px] box-border gap-[203px] max-w-full mq450:gap-[203px_51px] mq725:gap-[203px_101px] mq725:pr-[22px] mq725:box-border">
         <div className="self-stretch flex-1 flex flex-row items-end justify-between max-w-full gap-[20px]">
           <img

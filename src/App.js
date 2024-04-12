@@ -9,6 +9,12 @@ import StudentSignUp from "./pages/StudentSignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import SchoolSignUp from "./pages/SchoolSignUp";
+import HomeDash from "./admindashboard/AdminHome";
+import AdminHome from "./admindashboard/AdminHome";
+import AdminSchoolReg from "./admindashboard/AdminSchoolReg";
+import AdminSchoolMng from "./admindashboard/AdminSchoolMng";
+import AdminProfileSetting from "./admindashboard/AdminProfileSetting";
+import AdminSchoolEdit from "./admindashboard/AdminSchoolEdit";
 
 function App() {
   const action = useNavigationType();
@@ -57,18 +63,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route
-        path="/studentsignup"
-        element={<StudentSignUp />}
-      />
-      <Route
-        path="/schoolsignup"
-        element={<SchoolSignUp />}
-      />
-      <Route
-        path="/signin"
-        element={<SignIn />}
-      />
+      <Route path="/studentsignup" element={<StudentSignUp />} />
+      <Route path="/adminhome" element={<AdminHome />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/adminschoolregistration" element={<AdminSchoolReg />} />
+      <Route path="/adminschoolmanage" element={<AdminSchoolMng />} />
+      <Route path="/adminprofilesetting" element={<AdminProfileSetting />} />
+      <Route path="/adminschooledit/:id" element={<AdminSchoolEdit />} />
     </Routes>
   );
 }
