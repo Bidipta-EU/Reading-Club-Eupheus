@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Screensizehook from "../components/Screensizehook";
+import BreadCrumb from "../components/BreadCrumb";
 
 const AdminSchoolMng = () => {
   const navigate = useNavigate();
@@ -19,6 +20,11 @@ const AdminSchoolMng = () => {
         {screenSize.width < 550 ? "" : <Sidebar name={"adminschoolmng"} />}
 
         <div className="w-full bg-gray-300">
+        <BreadCrumb
+            crumbData={[
+              { name: "School Management", path: null }
+            ]}
+          />
           <div className="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
             <div className="overflow-y-hidden rounded-lg border">
               <div className="overflow-x-auto">
@@ -155,8 +161,7 @@ const AdminSchoolMng = () => {
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <div className="flex items-center">
-                      
-                       
+                                            
                             <p className="whitespace-no-wrap">Emerald Valley High School</p>
                        
                         </div>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Screensizehook from "../components/Screensizehook";
+import BreadCrumb from "../components/BreadCrumb";
 
 const AdminSchoolReg = () => {
   const navigate = useNavigate();
@@ -19,6 +20,11 @@ const AdminSchoolReg = () => {
         {screenSize.width < 550 ? "" : <Sidebar name={"adminschoolreg"} />}
 
         <div className="w-full bg-gray-300">
+        <BreadCrumb
+            crumbData={[
+              { name: "School Registration", path: null }
+            ]}
+          />
          
             <div class="lg:m-10">
               <form class="relative border border-gray-100 space-y-3 max-w-screen-md mx-auto rounded-md bg-white p-6 shadow-xl lg:p-10">

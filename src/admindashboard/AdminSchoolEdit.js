@@ -90,7 +90,7 @@ const AdminSchoolEdit = () => {
                 </div>
               </div>
               <div class="grid gap-3 lg:grid-cols-2">
-                <div>
+                {/* <div>
                   <label class=""> School State </label>
                   <div class="relative w-56 mt-2 bg-gray-100 rounded-lg">
                     <input
@@ -131,48 +131,92 @@ const AdminSchoolEdit = () => {
                       </li>
                     </ul>
                   </div>
+                </div> */}
+                 <div>
+                  <label class=""> School State </label>
+                  <select
+                    placeholde
+                    name="school"
+                    id="school"
+                    class={`mt-2 h-12 w-full rounded-md bg-gray-100  px-3 text-gray-800  `}
+                  >
+                    <option
+                      value="default"
+                      disabled
+                      selected
+                      hidden
+                      className=""
+                    >
+                      Select a State
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Super Admin"
+                    >
+                      State 1
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="State Admin"
+                    >
+                      State 2
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="District Admin"
+                    >
+                      State 3
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Center Incharge"
+                    >
+                      State 4
+                    </option>
+                  </select>
                 </div>
                 <div>
                   <label class=""> School City </label>
-                  <div class="relative w-56 mt-2 bg-gray-100 rounded-lg">
-                    <input
-                      class="peer hidden"
-                      type="checkbox"
-                      name="select-2"
-                      id="select-2"
-                    />
-                    <label
-                      for="select-2"
-                      class="flex w-full cursor-pointer rounded-lg select-none border p-2 px-3 text-sm text-gray-700 ring-blue-400 peer-checked:ring"
+                  <select
+                    placeholde
+                    name="school"
+                    id="school"
+                    class={`mt-2 h-12 w-full rounded-md bg-gray-100  px-3 text-gray-800  `}
+                  >
+                    <option
+                      value="default"
+                      disabled
+                      selected
+                      hidden
+                      className=""
                     >
-                      Select Option{" "}
-                    </label>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="pointer-events-none absolute right-5 top-3 h-4 text-gray-600 transition peer-checked:rotate-180"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
+                      Select a School
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Super Admin"
                     >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                    <ul class="max-h-0 select-none flex-col overflow-hidden rounded-b-lg shadow-md transition-all duration-300 peer-checked:max-h-56 peer-checked:py-3">
-                      <li class="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                        City 1
-                      </li>
-                      <li class="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                        City 2
-                      </li>
-                      <li class="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                        City 3
-                      </li>
-                    </ul>
-                  </div>
+                      School 1
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="State Admin"
+                    >
+                      School 2
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="District Admin"
+                    >
+                      School 3
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Center Incharge"
+                    >
+                      School 4
+                    </option>
+                  </select>
                 </div>
               </div>
 

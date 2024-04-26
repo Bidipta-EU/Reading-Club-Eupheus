@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Screensizehook from "../components/Screensizehook";
+import BreadCrumb from "../components/BreadCrumb";
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -18,7 +19,12 @@ const AdminHome = () => {
       <div className="flex ">
         {screenSize.width < 550 ? "" : <Sidebar name={"adminhome"} />}
 
-        <div className="w-full">
+        <div className="w-full bg-gray-300">
+        <BreadCrumb
+            crumbData={[
+              { name: "Home", path: null }
+            ]}
+          />
     
           <div className="grid grid-cols-1 gap-14 px-24 lg:grid-cols-3 py-12 bg-gray-300 h-full">
 
