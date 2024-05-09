@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 
 import "./global.css";
+import store from "./Store/index";
+import { Provider } from "react-redux";
 
 const muiTheme = createTheme();
 
@@ -22,7 +24,9 @@ root.render(
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
+        <Provider store={store}>
         <App />
+        </Provider>
       </ThemeProvider>
     </StyledEngineProvider>
   </BrowserRouter>

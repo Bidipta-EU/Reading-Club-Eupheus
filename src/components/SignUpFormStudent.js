@@ -11,6 +11,11 @@ const SignUpFormStudent = () => {
   const schoolCodeMap = { ABCD1234: "ABCD School", XYZ123: "XYZ School" };
   const [phone, setPhone] = useState("+91");
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+
+
   const defaultSchoolCode = () => {
     if(schoolCode !== "ABCD1234") setSchoolCode("ABCD1234")
     if(schoolCode === "ABCD1234") setSchoolCode("")
@@ -69,7 +74,49 @@ const SignUpFormStudent = () => {
         </div>
 
         <div className="grid gap-3 md:grid-cols-2">
-          <div>
+        <div>
+                  <label class=""> Gender </label>
+                  <select
+                    // onChange={(e) => {
+                    //   setValues(e.target.value, "state");
+                    // }}
+                    placeholde
+                    name="gender"
+                    id="gender"
+                    class={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 text-gray-800  `}
+                  >
+                    <option
+                      value="default"
+                      disabled
+                      selected
+                      hidden
+                      className=""
+                    >
+                      Select Gender
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="male"
+                    >
+                      Male
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="female"
+                    >
+                      Female
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="other"
+                    >
+                      Other
+                    </option>
+                  
+                  </select>
+                </div>
+
+          {/* <div>
             <label className=""> Gender </label>
             <div className="relative w-full mt-2 bg-gray-100 rounded-lg">
               <input
@@ -110,7 +157,7 @@ const SignUpFormStudent = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <div>
             <label className=""> Date of Birth </label>
             <input
@@ -175,48 +222,46 @@ const SignUpFormStudent = () => {
               )}
             </div>
           </div>
-          <div>
-            <label className=""> Grade Level </label>
-            <div className="relative w-full mt-2 bg-gray-100 rounded-lg">
-              <input
-                className="peer hidden"
-                type="checkbox"
-                name="select-1"
-                id="select-1"
-              />
-              <label
-                for="select-1"
-                className="flex w-full h-12 cursor-pointer rounded-lg select-none border p-2 pt-3 px-3 text-sm text-gray-700 ring-blue-400 peer-checked:ring"
-              >
-                Select Grade{" "}
-              </label>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="pointer-events-none absolute right-5 top-3 h-4 text-gray-600 transition peer-checked:rotate-180"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-              <ul className="max-h-0 select-none flex-col overflow-hidden rounded-b-lg shadow-md transition-all duration-300 peer-checked:max-h-56 peer-checked:py-3">
-                <li className="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                  LEVEL 1 | Grade 1-3
-                </li>
-                <li className="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                  LEVEL 2 | Grade 4-6
-                </li>
-                <li className="cursor-pointer px-3 py-2 text-sm text-gray-500 hover:bg-blue-500 hover:text-white">
-                  LEVEL 3 | Grade 7-9
-                </li>
-              </ul>
-            </div>
-          </div>
+
+             <div>
+                  <label class=""> Grade Level </label>
+                  <select
+            
+                    placeholde
+                    name="gender"
+                    id="gender"
+                    class={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 text-gray-800  `}
+                  >
+                    <option
+                      value="default"
+                      disabled
+                      selected
+                      hidden
+                      className=""
+                    >
+                      Select Grade
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Level 1"
+                    >
+                      LEVEL 1 | Grade 1-3
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Level 2"
+                    >
+                      LEVEL 2 | Grade 4-6
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Level 3"
+                    >
+                      LEVEL 3 | Grade 7-9
+                    </option>
+                  
+                  </select>
+                </div>
         </div>
 
         <div>
@@ -228,7 +273,7 @@ const SignUpFormStudent = () => {
             className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
           />
         </div>
-
+{/* 
         <div>
           <label className=""> Available Batch </label>
           <div className="relative w-full mt-2 bg-gray-100 rounded-lg">
@@ -270,7 +315,47 @@ const SignUpFormStudent = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </div> */}
+
+<div>
+                  <label class=""> Available Batch </label>
+                  <select
+            
+                    placeholde
+                    name="gender"
+                    id="gender"
+                    class={`mt-2 h-12 w-full rounded-md bg-gray-100 px-3 text-gray-800  `}
+                  >
+                    <option
+                      value="default"
+                      disabled
+                      selected
+                      hidden
+                      className=""
+                    >
+                      Select Batch
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Batch 1"
+                    >
+                      Batch 1 | Time: 1-3
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Batch 2"
+                    >
+                      Batch 2 | Time: 4-6
+                    </option>
+                    <option
+                      class="text-lg text-gray-500 hover:bg-blue-500 hover:text-white"
+                      value="Batch 3"
+                    >
+                      Batch 3 | Time: 7-9
+                    </option>
+                  
+                  </select>
+                </div>
 
         <div className="flex justify-between pt-4">
           <div className="font-bold text-2xl">Price:</div>

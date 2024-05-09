@@ -15,11 +15,22 @@ import AdminSchoolReg from "./admindashboard/AdminSchoolReg";
 import AdminSchoolMng from "./admindashboard/AdminSchoolMng";
 import AdminProfileSetting from "./admindashboard/AdminProfileSetting";
 import AdminSchoolEdit from "./admindashboard/AdminSchoolEdit";
+// import AdminBatchMng from "./admindashboard/AdminBatchMng";
+import AdminBatchEdit from "./admindashboard/AdminBatchEdit";
+import { useSelector } from "react-redux";
+import Studentbatch from "./student/Studentbatch";
+import Teacherbatch from "./teacherpanel/Teacherbatch";
+import Teacherlevel from "./teacherpanel/Teacherlevel";
+import Teachersession from "./teacherpanel/Teachersession";
+import AdminBatchCreate from "./admindashboard/AdminBatchCreate";
+
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+  const Admin = useSelector((state) => state.auth.admin);
+
 
   useEffect(() => {
     if (action !== "POP") {
@@ -64,12 +75,22 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/studentsignup" element={<StudentSignUp />} />
-      <Route path="/adminhome" element={<AdminHome />} />
-      <Route path="/signin" element={<SignIn />} />
+      <Route path="/adminhome" element={Admin? <AdminHome /> : <SignIn/>} />
+      {/* <Route path="/adminhome" element={<AdminHome />} /> */}
       <Route path="/adminschoolregistration" element={<AdminSchoolReg />} />
       <Route path="/adminschoolmanage" element={<AdminSchoolMng />} />
+      <Route path="/adminbatchcreate" element={<AdminBatchCreate />} />
       <Route path="/adminprofilesetting" element={<AdminProfileSetting />} />
       <Route path="/adminschooledit/:id" element={<AdminSchoolEdit />} />
+      <Route path="/adminbatchedit" element={<AdminBatchEdit />} />
+
+      <Route path="/studentbatch" element={<Studentbatch />} />
+
+      <Route path="/teacherbatch" element={<Teacherbatch />} />
+      <Route path="/teacherlevel" element={<Teacherlevel />} />
+      <Route path="/teachersession" element={<Teachersession />} />
+
+      <Route path="/signin" element={Admin ? <AdminHome /> : <SignIn />} />
     </Routes>
   );
 }

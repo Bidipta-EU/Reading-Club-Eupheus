@@ -220,7 +220,7 @@ const AdminSchoolEdit = () => {
                 </div>
               </div>
 
-              <div class="checkbox">
+              {/* <div class="checkbox">
                 <input type="checkbox" id="chekcbox1" checked="" />
                 <label for="checkbox1">
                   I agree to the{" "}
@@ -229,14 +229,20 @@ const AdminSchoolEdit = () => {
                     Terms and Conditions{" "}
                   </a>{" "}
                 </label>
-              </div>
+              </div> */}
 
               <div>
                 <button
                   type="button"
-                  class="mt-5 w-full rounded-md bg-blue-600 p-2 text-center font-semibold text-white"
+                  class="mt-5 w-full rounded-md bg-violet-600 p-2 text-center font-semibold text-white hover:bg-violet-800"
                 >
-                  Get Started
+                  Update School
+                </button>
+                <button
+                  type="button"
+                  class="mt-5 w-full rounded-md bg-red-500 p-2 text-center font-semibold text-white hover:bg-red-700"
+                >
+                  Delete School
                 </button>
               </div>
             </form>
