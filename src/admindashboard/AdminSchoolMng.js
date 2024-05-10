@@ -19,7 +19,7 @@ const AdminSchoolMng = () => {
   const [loading, setLoading] = useState(false);
 
   const getAllScchool = async () => {
-    console.log(Cookies.get("token"));
+    // console.log(Cookies.get("token"));
     setLoading(true);
     const res = await instance({
       url: `school/all`,
@@ -33,6 +33,22 @@ const AdminSchoolMng = () => {
     setAllSchool(res.data.data);
     setLoading(false);
   };
+
+  const handleStatus = async (id, currentStatus) => {
+    console.log(id, currentStatus)
+    setLoading(true)
+    const res = await instance({
+      url: `/school/changeStatus/${id}`,
+      method: "PUT",
+      data : {status: !currentStatus},
+      headers: {
+        Authorization: Cookies.get("token"),
+        // accesskey: `auth74961a98ba76d4e4`,
+      },
+    });
+    getAllScchool()
+    setLoading(false);
+  }
 
   useEffect(() => {
     getAllScchool();
@@ -73,7 +89,7 @@ const AdminSchoolMng = () => {
                         <tr key={ele.id}>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap">
-                              {ele.schoolCode}
+                              {ele.schoolCode} 
                             </p>
                           </td>
                           <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
@@ -102,7 +118,8 @@ const AdminSchoolMng = () => {
                                 type="checkbox"
                                 value=""
                                 class="sr-only peer"
-                                defaultChecked
+                                checked={ele.status}
+                                onClick={()=>handleStatus(ele._id, ele.status)}
                               />
                               <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none   dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
                             </label>

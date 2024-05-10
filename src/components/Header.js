@@ -21,19 +21,12 @@ const Header = ({ name, highlight }) => {
     }
   };
   const handleLogout = () => {
-    // Cookies.remove("accessToken");
-    // Cookies.remove("type");
-    // Cookies.remove("id");
-    // Cookies.remove("ms-auth");
-    // Cookies.remove("user");
-    // Cookies.remove("company");
+ 
+    Cookies.remove("teacher");
+    Cookies.remove("student");
     Cookies.remove("admin");
-    // Cookies.remove("zsm");
-    // Cookies.remove("saleshead");
-    // Cookies.remove("finance");
-    // Cookies.remove("HR");
-    // Cookies.remove("warehouse_GP");
-    // Cookies.remove("SM");
+    Cookies.remove("token");
+
     dispatch(authActions.logout());
     navigate("/");
   };
@@ -86,16 +79,13 @@ const Header = ({ name, highlight }) => {
               <Link to="/adminhome">Admin Dashboard</Link>
             </li>
           
-            {Cookies.get("admin") ? (
+            {Cookies.get("admin")||Cookies.get("teacher")||Cookies.get("student") ? (
               <li class="md:mr-12">
                
                   <button
                   onClick={handleLogout}
-                    class={`${
-                      highlight == "login"
-                        ? "bg-violet-500 text-white"
-                        : "text-violet-900"
-                    } rounded-full border-2 border-violet-900 px-6 py-1  transition-colors hover:bg-violet-500 hover:text-white`}
+                    class={`text-violet-900
+                     rounded-full border-2 border-violet-900 px-6 py-1  transition-colors hover:bg-violet-500 hover:text-white`}
                   >
                     Logout
                   </button>

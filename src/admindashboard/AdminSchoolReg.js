@@ -83,12 +83,18 @@ const AdminSchoolReg = () => {
     }
     setLoading(true);
     const postData = {
-      schoolCode: schoolCode,
-      schoolName: schoolName,
-      address: address,
-      city: city,
-      state: state,
-      discount: discount,
+      // "schoolCode": schoolCode,
+      // "schoolName": schoolName,
+      // "address": address,
+      // "city": city,
+      // state: state,
+      // discount: discount,
+      "schoolCode":schoolCode,
+      "schoolName":"Name of the school",
+      "address":"address",
+      "city":"City as string",
+      "state": "State as string",
+      "discount":50
     };
     const res = await instance({
       url: `school/create`,

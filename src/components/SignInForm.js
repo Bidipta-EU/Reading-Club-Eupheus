@@ -33,191 +33,67 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-    if (email.trim().length === 0 || password.trim().length === 0) {
-      setHasBlank(true);
-      return;
-      // snackbarRef.current.openSnackbar();
-    } else {
-      setHasBlank(false);
-    }
-
-    setLoading(true);
-
-    const res = await instance({
-      url: "auth/login",
-      method: "post",
-      data: {
-        email: email,
-        password: password,
-      },
-    });
-   console.log(res)
-    if (res?.data?.data?.token && res?.data?.data?.user?.role) {
-      if (res.data.data.user.role === "admin") {
-        Cookies.set(
-          "admin",
-          `id: ${res.data.data.user._id}, accessToken: ${res.data.data.token}`
-        );
-        Cookies.set("token", `${res.data.data.token}`);
-        dispatch(authActions.adminLogin());
+      if (email.trim().length === 0 || password.trim().length === 0) {
+        setHasBlank(true);
+        return;
+        // snackbarRef.current.openSnackbar();
+      } else {
+        setHasBlank(false);
       }
+
+      setLoading(true);
+
+      const res = await instance({
+        url: "auth/login",
+        method: "post",
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+
+      Cookies.remove("teacher");
+      Cookies.remove("student");
+      Cookies.remove("admin");
+      Cookies.remove("token");
+ 
+      if (res?.data?.data?.token && res?.data?.data?.user?.role) {
+        if (res.data.data.user.role === "admin") {
+          Cookies.set(
+            "admin",
+            `id: ${res.data.data.user._id}, accessToken: ${res.data.data.token}`
+          );
+          Cookies.set("token", `${res.data.data.token}`);
+          dispatch(authActions.adminLogin());
+          
+        }
+
+        if (res.data.data.user.role === "teacher") {
+         
+          Cookies.set(
+            "teacher",
+            `id: ${res.data.data.user._id}, accessToken: ${res.data.data.token}`
+          );
+          Cookies.set("token", `${res.data.data.token}`);
+          dispatch(authActions.teacherLogin());
+        }
+
+        if (res.data.data.user.role === "student") {
+         
+          Cookies.set(
+            "student",
+            `id: ${res.data.data.user._id}, accessToken: ${res.data.data.token}`
+          );
+          Cookies.set("token", `${res.data.data.token}`);
+          dispatch(authActions.studentLogin());
+        }
+        
+      }
+  
+      setLoading(false);
+    } catch (e) {
+      alert(error);
     }
-    // .catch((err) => {
-    //   console.log(err.response);
-    //   if (err?.response?.data?.message) {
-    //     setErrMessage(err.response.data.message);
-    //     snackbarRef.current.openSnackbar();
-    //   }
-    // });
-
-    // if (res?.data?.id && res?.data?.accessToken) {
-    //   if (res.data.type === "user") {
-    //     Cookies.set(
-    //       "user",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //   }
-    //   Cookies.set("id", `${res.data.id}`);
-    //   Cookies.set("accessToken", `${res.data.accessToken}`);
-    //   Cookies.set("type", `${res.data.type}`);
-    //   Cookies.set("company", `${res.data.company}`);
-
-    //   if (res.data.type === "training") {
-    //     Cookies.set(
-    //       "training",
-    //       // true
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.trainingLogin());
-    //   }
-
-    //   if (res.data.type === "admin") {
-    //     Cookies.set(
-    //       "admin",
-    //       // true
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.adminLogin());
-    //   }
-    //   if (res.data.type === "zsm") {
-    //     Cookies.set(
-    //       "zsm",
-    //       // true
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.zsmLogin());
-    //   }
-
-    //   if (res.data.type === "IT") {
-    //     console.log("login it");
-    //     Cookies.set(
-    //       "IT",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.itLogin());
-    //   }
-
-    //   if (res.data.type === "finance") {
-    //     Cookies.set(
-    //       "finance",
-    //       //  true
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.financeLogin());
-    //   }
-
-    //   if (res.data.type === "sales_head") {
-    //     console.log("salesHead");
-    //     Cookies.set(
-    //       "saleshead",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.salesheadLogin());
-    //   }
-
-    //   if (res.data.type === "warehouse_GP") {
-    //     console.log("warehouse_GP");
-    //     Cookies.set(
-    //       "warehouse_GP",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.gatePassLogin());
-    //   }
-
-    //   if (res.data.type === "editorial") {
-    //     Cookies.set(
-    //       "editorial",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.editorialLogin());
-    //   }
-
-    //   if (res.data.type === "SM") {
-    //     Cookies.set(
-    //       "SM",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.smLogin());
-    //   }
-
-    //   dispatch(authActions.login());
-
-    //   if (res.data.type === "HR") {
-    //     Cookies.set(
-    //       "HR",
-    //       `id: ${res.data.id}, accessToken: ${res.data.accessToken}`
-    //     );
-    //     dispatch(authActions.HRLogin());
-    //   }
-
-    //   if (res.data.type === "training" && res.data.company === "Euphues") {
-    //     navigate("/manageSchoolTraining");
-    //   } else if (
-    //     res.data.type === "warehouse_GP" &&
-    //     res.data.company === "Euphues"
-    //   ) {
-    //     navigate("/gatepass_dashboard");
-    //   } else if (
-    //     res.data.type === "admin" &&
-    //     res.data.company === "Euphues"
-    //   ) {
-    //     navigate("/admin/home");
-    //   } else if (res.data.type === "zsm" && res.data.company === "Euphues") {
-    //     navigate("/");
-    //   } else if (
-    //     res.data.type === "finance" &&
-    //     res.data.company === "Euphues"
-    //   ) {
-    //     navigate("/finance/aof");
-    //   } else if (
-    //     res.data.type === "sales_head" &&
-    //     res.data.company === "Euphues"
-    //   ) {
-    //     navigate("/saleshead/aof");
-    //   } else if (res.data.type === "HR" && res.data.company === "Euphues") {
-    //     navigate("/hr/home");
-    //   } else if (res.data.type === "IT" && res.data.company === "Euphues") {
-    //     navigate("/reimbursement_report");
-    //   } else if (res.data.type === "SM" && res.data.company === "Euphues") {
-    //     navigate("/sm/doc_print");
-    //   } else if (
-    //     res.data.type === "editorial" &&
-    //     res.data.company === "Euphues"
-    //   ) {
-    //     navigate("/reimbursement_report");
-    //   } else {
-    //     navigate("/");
-    //   }
-    // }
-    // if (res?.data?.message) {
-    //   setErrMessage(res.data.message);
-    //   snackbarRef.current.openSnackbar();
-    // }
-    setLoading(false);
-  } catch(e){
-    // setError({ error: e.message, status: e.status })
-    alert(error)
-}
   };
 
   return (
